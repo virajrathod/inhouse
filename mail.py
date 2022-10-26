@@ -1,3 +1,12 @@
+'''
+This script is a simple python code to send an email using the smtp library
+
+LAST_UPDATED_ON: 10/26/2022
+
+'''
+__author__ = ['Viraj Rathod']
+__version__ = '0.1'
+
 from email.message import EmailMessage
 from re import sub
 import smtplib
@@ -13,7 +22,6 @@ body = '''
 Isn't this cool
 '''
 
-
 em = EmailMessage()
 em['From'] = email_sender
 em['To'] = email_rec
@@ -25,5 +33,4 @@ context = ssl.create_default_context()
 with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
     smtp.login(email_sender, email_password)
     smtp.sendmail(email_sender, email_rec, em.as_string())
-    print('Mail sent')
-    
+    # print('Mail sent')
